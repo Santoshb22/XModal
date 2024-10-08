@@ -8,16 +8,16 @@ const App = () => {
 
   return (
     <div className = "app">
-      <h1>User Details Modal</h1>
-      <Button 
-      onClick = {() => setShowModal(true)}
-      >
-        Open Form
-      </Button>
-
-      <div className={showModal? "show-modal" : "hide-modal"}>
-        <Modal/>
+      <div className="header">
+        <h1>User Details Modal</h1>
+        <Button 
+        onClick = {() => setShowModal(true)}
+        >
+          Open Form
+        </Button>
       </div>
+      
+      {showModal && <Modal/>}
     </div>
   )
 }
