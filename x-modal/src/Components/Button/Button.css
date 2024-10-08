@@ -1,0 +1,12 @@
+.primary-btn {
+    border: none;
+    padding: 0.8rem;
+    width: 8rem;
+    border-radius: 0.4rem;
+    background-color: rgb(56, 112, 255);
+    color: white;
+    font-weight: 700;
+    font-size: medium;
+    cursor: pointer;
+
+}
