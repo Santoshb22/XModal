@@ -10,6 +10,8 @@ const Modal = () => {
     dob: "",
   })
 
+  
+
   const handleChange = (e) => {
     const {name, value} = e.target;
 
@@ -25,7 +27,9 @@ const Modal = () => {
       return false;
     }
 
-    if(!formData.email.includes("@gmail.com")) {
+    
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(!emailRegex.test(formData.email)) {
       alert("Invalid email. Please check your email address.");
       return false;
     }
