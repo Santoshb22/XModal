@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button from "../Button/Button";
 import "./Modal.css";
 
-const Modal = () => {
+const Modal = ({onClose}) => {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -10,8 +10,19 @@ const Modal = () => {
     dob: "",
   })
 
-  
+  const closeModalRef = useRef(null);  
+  const hanldeClickedOutsideModal = (e) => {
+    if(closeModalRef.current && !closeModalRef.current.contains(e.target)) {
+      onClose();
+    }
+  }
 
+  useEffect(() => {
+    document.addEventListener("mousedown", hanldeClickedOutsideModal);
+    return () => {
+      document.removeEventListener("mousedown", hanldeClickedOutsideModal);
+    }
+  })
   const handleChange = (e) => {
     const {name, value} = e.target;
 
@@ -58,8 +69,8 @@ const Modal = () => {
 
   return (
     
-    <div className="modal">
-      <div className="modal-content">
+    <div className="modal" >
+      <div className="modal-content" ref={closeModalRef}>
         <form onSubmit={handleSubmit}>
           <h2>Fill Details</h2>
 

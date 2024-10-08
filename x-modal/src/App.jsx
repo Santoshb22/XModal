@@ -6,6 +6,10 @@ import {useState} from "react";
 const App = () => {
   const [showModal, setShowModal] = useState(false);
 
+  const handleClose = () => {
+    setShowModal(false);
+  }
+
   return (
     <div className = "app">
       <div className="header">
@@ -17,7 +21,7 @@ const App = () => {
         </Button>
       </div>
       
-      {showModal && <Modal/>}
+      {showModal && <Modal onClose = {handleClose}/>}
     </div>
   )
 }
